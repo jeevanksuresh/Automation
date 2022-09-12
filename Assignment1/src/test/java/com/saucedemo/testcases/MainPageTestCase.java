@@ -1,0 +1,41 @@
+package com.saucedemo.testcases;
+
+import java.io.IOException;
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+
+import com.saucedemo.pages.CartPage;
+import com.saucedemo.pages.ExcelPage;
+import com.saucedemo.pages.InformationPage;
+import com.saucedemo.pages.LoginPage;
+import com.saucedemo.pages.OverviewPage;
+import com.saucedemo.pages.ProductPage;
+
+public class MainPageTestCase {
+	
+public static void main(String[] args) throws InterruptedException, IOException {
+		
+		System.setProperty("webdriver.edge.driver",
+				  "C:\\Users\\jeevank.suresh\\Downloads\\edgedriver_win64\\msedgedriver.exe");
+				  
+				  WebDriver driver=new EdgeDriver();
+				  driver.get("https://www.saucedemo.com/");
+				  driver.manage().window().maximize();
+				  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5000));
+				  
+				  LoginPage loginPage = new LoginPage(driver);
+				  System.out.println("starting");
+				  ExcelPage exe=new ExcelPage();
+				  ProductPage Product = loginPage.logIn(exe.getData().get(1), exe.getData().get(2));
+				  Thread.sleep(2000);
+				  CartPage cart = Product.AddToCart();
+				  Thread.sleep(2000);
+				 InformationPage information = cart.ClickCheckout();
+				 Thread.sleep(2000);
+				OverviewPage overview = information.enterDetails(exe.getData().get(4), exe.getData().get(5), exe.getData().get(6));
+				overview.Finish();
+				 
+}
+}

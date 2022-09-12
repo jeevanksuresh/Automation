@@ -1,0 +1,85 @@
+package com.saucedemo.pages;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class Excelsheet {
+	public ArrayList<String> datadetail() throws IOException {
+	
+	   FileInputStream f= new FileInputStream("D:\\TestData.xlsx");
+       XSSFWorkbook book=new XSSFWorkbook(f);
+       
+       
+       ArrayList<String> arr1=new ArrayList<String>();
+       int sheet = book.getNumberOfSheets();
+       
+       for(int p=0; p<sheet;p++) {
+           
+           
+           book.getSheetAt(p).getSheetName().equalsIgnoreCase("SauceDemoTestData");
+           XSSFSheet sh = book.getSheetAt(p);
+           Iterator<Row> row = sh.rowIterator();
+           Row nxt = row.next();
+           Iterator<Cell> ch = nxt.cellIterator();
+           
+           
+           int column1=0;
+           int column2=0;
+           
+           
+           while(ch.hasNext()) {
+               if(ch.next().getStringCellValue().equalsIgnoreCase("SauceDemoTestCases")) {
+                   
+               
+               column2=column1;
+           }
+           column1++;
+           }
+       
+       
+       while(row.hasNext()) {
+           Row r = row.next();
+           if(r.getCell(column2).getStringCellValue().equalsIgnoreCase("LoginPage")) {
+               Iterator<Cell> hh = r.cellIterator();
+               while(hh.hasNext()) {
+                   arr1.add(hh.next().getStringCellValue());
+               }    
+               while(row.hasNext()) {
+                   Row g = row.next();
+                   if(g.getCell(column2).getStringCellValue().equalsIgnoreCase("InformationPage")) {
+                       Iterator<Cell> hhj = r.cellIterator();
+                       while(hhj.hasNext()) {
+                           arr1.add(hhj.next().getStringCellValue());
+                           
+                       }
+               
+                   }
+               }
+           }
+           
+       }
+           
+       }
+       return arr1;
+       
+   }
+
+	
+	}
+
+
+
+
+	
+	
+
+

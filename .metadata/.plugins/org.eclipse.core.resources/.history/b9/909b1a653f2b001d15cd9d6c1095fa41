@@ -1,0 +1,3 @@
+module TestngDemo {
+	requires org.testng;
+}

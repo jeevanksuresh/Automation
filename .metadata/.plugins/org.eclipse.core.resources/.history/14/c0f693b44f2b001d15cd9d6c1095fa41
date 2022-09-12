@@ -1,0 +1,29 @@
+package com.loan.terstcases;
+
+import org.testng.annotations.Test;
+
+public class PersonalLoan {
+	
+	@Test
+	public void webPagePersonalLoan() {
+		
+		System.out.println("Webpage Personal Loan");
+
+}
+	
+	@Test
+	public void mobilePagePersonalLoan() {
+		
+		System.out.println("Mobilepage Personal Loan");
+
+}
+	
+	@Test
+	public void apiPersonalLoan() {
+		
+		System.out.println("Apipage Personal Loan");
+
+}
+
+
+}

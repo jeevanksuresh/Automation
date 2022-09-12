@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Loan">
+<groups>
+<run>
+<include name="Smoke"></include>
+</run>
+</groups>
+  <test name="Car Loan">
+    <classes>
+      <class name="com.loan.terstcases.CarLoan"/>
+      <class name="com.loan.terstcases.EducationLoan"/>
+      <class name="com.loan.terstcases.HomeLoan"/>
+    </classes>
+    </test>
+    <test name="Personal Loan">
+    <classes>
+      <class name="com.loan.terstcases.PropertyLoan"/>
+      <class name="com.loan.terstcases.PersonalLoan"/>
+        </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

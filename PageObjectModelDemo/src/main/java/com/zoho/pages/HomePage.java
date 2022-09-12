@@ -1,0 +1,52 @@
+package com.zoho.pages;
+
+import org.apache.logging.log4j.LogManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class HomePage {
+
+	WebDriver driver;
+	public static org.apache.logging.log4j.Logger log = LogManager.getLogger(HomePage.class.getName());
+	
+	public HomePage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+		@FindBy(xpath = "//a[.='Sign in']")
+		WebElement Signin;
+		
+		public void gotoCustomers() {
+			
+		}
+		
+		public void gotoSupport() {
+			
+		}
+
+		public void gotoContactsales() {
+	
+		}
+		
+		public LoginPage gotoSignIn() {
+			Signin.click();
+			
+			 log.info("Logger Message");
+			  log.debug("Debug Message");
+			  log.error("Error Message");
+			  log.fatal("Fatal Message");
+			 
+			
+			return new LoginPage(driver);
+		}
+		public void gotoFreeSignup() {
+			
+		}
+			
+	
+		
+		
+	}
+
